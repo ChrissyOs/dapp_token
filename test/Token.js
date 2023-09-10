@@ -90,7 +90,7 @@ describe("Token", () => {
 
 	})
 
-	describe =("Approving Tokens", () => {
+	describe("Approving Tokens", () => {
 		let amount, transaction, result
 
 		beforeEach(async () => {
@@ -116,7 +116,9 @@ describe("Token", () => {
 		})
 
 		describe("Failure", () => {
-
+			it("rejects invalid spenders", async () => {
+				await expect(token.connect(deployer).approve("0x0000000000000000000000000000000000000000", amount)).to.be.reverted
+			})
 
 		})
 	})
